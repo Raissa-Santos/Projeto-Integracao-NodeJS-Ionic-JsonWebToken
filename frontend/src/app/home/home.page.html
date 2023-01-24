@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Raissa
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+        <ion-item-divider>
+      <ion-label>
+        Cadastrar conta
+      </ion-label>
+    </ion-item-divider>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" [(ngModel)] = "email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)] = "senha"></ion-input>
+    </ion-item>
+
+    <ion-button color="success" (click)="cadastrar()">Cadastrar</ion-button>
+
+    <ion-grid *ngIf="contas.length > 0">
+      <ion-row>
+        <ion-col>
+          <strong>Email</strong>
+        </ion-col>        
+        <ion-col></ion-col>
+        </ion-row>
+        
+      <ion-row *ngFor="let c of contas">
+        <ion-col>
+          {{c.email}}
+        </ion-col>           
+        <ion-col>
+          <ion-icon (click)="confirmarExclusao(c.id)" name="trash"></ion-icon>
+        </ion-col>    
+      </ion-row>
+    </ion-grid>
+
+    <ion-button (click)="logout()">Logout</ion-button>
+  </div>
+</ion-content>
